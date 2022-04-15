@@ -1,6 +1,6 @@
 ##Link video exemplo: https://www.youtube.com/watch?v=ZcSWU_8wUDU
 
-###Requisitos:
+##Requisitos:
 - Perfil do Github para compartilhamento do teste.
 - Versão da Unity 2021.3.0f1 LTS
 - Uso do GIT.
@@ -10,7 +10,7 @@
 - Ao fim do projeto realizar o Pull Request em todos os branches criados.
 - Organização de commits.
 	
-###Avaliação:
+##Avaliação:
 - Usuário criará um branch a partir do Master, para o desenvolvimento de seu teste, a partir deste utilizará outros branches (ligado ao mesmo) para finalizar a avaliação.
 - Montagem de HUD.
 - Montagem da tela como apresentado no exemplo.
@@ -21,7 +21,7 @@
 	- Utilização de eventos dos botões.
 	- Organização da hierarquia.
 
-###Gameplay
+##Gameplay
 - A ideia é o desenvolvimento de um jogo estilo Gummi Ship KingdomHearts: Kingdom Hearts: Final Mix (PS4): Gummi Ship Missions.
 - Avaliação:
 	- Tela início do jogo, botão de play.
@@ -35,7 +35,7 @@
 	- Tela de Game Over, contendo a pontuação descriminada, pontuação total e um botão de replay.
 	- Quaisquer mecânicas extras introduzidas no projeto serão avaliadas como um bônus.
 
-###Avaliação Geral
+##Avaliação Geral
 - Código:
 	- Boas práticas no Unity.
 	- Convenções de codificação em C# pela Microsoft.
