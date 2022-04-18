@@ -4,7 +4,7 @@ public class InputReaderManager
 {
     public InputReaderManager()
     {
-        Debug.Log("<color=blue> Input Reader created</color>");
+        Debug.Log("<color=yellow> Input Reader created</color>");
     }
     public Vector3? GetInputFromKeyboard()
     {

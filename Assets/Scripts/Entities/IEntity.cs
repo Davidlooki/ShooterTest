@@ -4,6 +4,6 @@ namespace Entities
 {
     public interface IEntity
     {
-        Transform transform { get; }
+        Transform entityTransform { get; set;}
     }
 }
