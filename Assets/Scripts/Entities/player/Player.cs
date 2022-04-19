@@ -24,7 +24,7 @@ namespace Entities.player
             base.Awake();
 
             readerInput = new InputReaderManager();
-            currentWeapon = GameObject.FindObjectOfType<Weapon>();
+            currentWeapon = this.GetComponent<Weapon>();
         }
 
         private void Start() 
@@ -44,7 +44,7 @@ namespace Entities.player
             
             if(currentWeapon != null)
             {
-                currentWeapon.Process();
+                currentWeapon.Action();
             }
         }
 
@@ -54,7 +54,7 @@ namespace Entities.player
             {
                 foreach(ParticleSystem _propulsion in propulsionsParticles)
                 {
-                    _propulsion.Stop();
+                    _propulsion.Play();
                 }
             }
         }

@@ -308,6 +308,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3093809347440803306, guid: 1ed331a525c094fb085f55343a72c215,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3093809347573381878, guid: 1ed331a525c094fb085f55343a72c215,
         type: 3}
       propertyPath: m_RootOrder
@@ -368,29 +373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3093809348063820867, guid: 1ed331a525c094fb085f55343a72c215,
+    - target: {fileID: 3093809347973588748, guid: 1ed331a525c094fb085f55343a72c215,
         type: 3}
-      propertyPath: myName
-      value: 
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ed331a525c094fb085f55343a72c215, type: 3}
---- !u!1 &3093809348063820866 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3093809347573381879, guid: 1ed331a525c094fb085f55343a72c215,
-    type: 3}
-  m_PrefabInstance: {fileID: 3093809348063820865}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3093809348063820869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3093809348063820866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c540c1468f99433d9e93e04c0b26ea1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: bac33496e708a4fca9de634f96ab5855, type: 2}

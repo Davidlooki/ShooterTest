@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4211657980404162582}
   - component: {fileID: 8208443024465136707}
   m_Layer: 0
-  m_Name: BulletLowImpact
+  m_Name: BulletHighImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 897c1cdaff3c97a49bfbd45f3b6ee012, type: 2}
+  - {fileID: 2100000, guid: 27f49091498774c7eac501bec8faf610, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,3 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8babec9ffb141497f8f657e3f0186c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
+  lifespan: 1

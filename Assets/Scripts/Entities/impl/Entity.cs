@@ -9,7 +9,8 @@ namespace Entities.impl
         [SerializeField]
         private string myName;
 
-        private int live = 3;
+        [SerializeField]
+        private int life = 3;
 
         public Transform entityTransform { get; set; }
 
@@ -20,16 +21,15 @@ namespace Entities.impl
             entityTransform = this.transform;
         }
 
-        public string GetMyName
+        public string MyName
         {
             get { return myName; }
         }
 
-
-        public int Live
+        public int Life
         {
-            get { return live; }
-            set { live = value; }
+            get { return life; }
+            set { life = value; }
         }
     }
 }

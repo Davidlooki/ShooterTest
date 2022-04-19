@@ -8,21 +8,13 @@ namespace Weapons
         [SerializeField]
         private WeaponDataSO weaponData;
 
-        private int currentAmmo = 0;
+        protected Bullet bullet;
 
         private bool canShoot = true;
 
-        public IEnumerator FireInterval(float _fireInterval)
-        {
-            while (_fireInterval != 0)
-            {
-                canShoot = false;
-                _fireInterval -= Time.deltaTime;
-                yield return null;
-            }
-            canShoot = true;
-        }
+        private float currentFireInterval = 0;
 
+        #region GETTERS/SETTERS
         public WeaponDataSO WeaponData => weaponData;
 
         public bool CanShoot
@@ -30,7 +22,48 @@ namespace Weapons
             get { return canShoot; }
             set { canShoot = value; }
         }
+        #endregion
 
-        public abstract void Process();
+        private void Awake()
+        {
+            if (WeaponData != null)
+            {
+                bullet = weaponData.GetBullet;
+            }
+        }
+
+        public IEnumerator CoroutineFireInterval()
+        {
+            currentFireInterval = WeaponData.FireIntervalTime;
+            canShoot = false;
+            while (currentFireInterval >= 0)
+            {
+                currentFireInterval -= Time.deltaTime;
+                yield return null;
+            }
+            canShoot = true;
+        }
+
+        public virtual void CreateBullet()
+        {
+            if (bullet != null)
+            {
+                GameObject _bulletInstance = Instantiate(bullet.gameObject);
+                
+                Vector3 _offsetPosition = this.transform.position + (Vector3.forward * .5f);
+
+                _bulletInstance.transform.SetPositionAndRotation(_offsetPosition, this.transform.rotation);
+
+                _bulletInstance.GetComponent<Bullet>().Target = Vector3.forward * 10;
+                _bulletInstance.GetComponent<Bullet>().ForceSpeed = WeaponData.ForceSpeed;
+            }
+        }
+
+        private void OnDestroy() 
+        {
+            StopCoroutine(CoroutineFireInterval());
+        }
+
+        public abstract void Action();
     }
 }

@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 1
   prewarm: 1
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 0
   startDelay:
@@ -4822,6 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3093809347573381878}
   - component: {fileID: 3093809348063820867}
+  - component: {fileID: 3093809348063820869}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4859,6 +4860,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282c1ab52671743f0b143c06ba8b448d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: Player 1
+  propulsionsParticles:
+  - {fileID: 3093809347440803306}
+  - {fileID: 3093809347973588748}
+--- !u!114 &3093809348063820869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093809347573381879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c540c1468f99433d9e93e04c0b26ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: bac33496e708a4fca9de634f96ab5855, type: 2}
 --- !u!1 &3093809347973588747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4909,7 +4927,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 1
   prewarm: 1
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 0
   startDelay:

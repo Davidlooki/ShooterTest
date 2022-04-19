@@ -5,29 +5,19 @@ namespace Weapons.controllers
 {
     public class LowImpactFire : Weapon
     {
-        private Bullet bullet;
-
-        private float reloadTimeSpent = 0;
-
-        private bool onReload = false;
-
-        public override void Process()
+        public override void Action()
         {
             var _fireInterval = WeaponData.FireIntervalTime;
-            // StartCoroutine(FireInterval(_fireInterval));
-            // if(CanShoot && !onReload)
-            Debug.Log("WEAPON PROCESS");
-            //CreateBullet();
+            if(CanShoot)
+            {
+                StartCoroutine(CoroutineFireInterval());
+                CreateBullet();
+            }
         }
 
-        private void Reload()
+        public override void CreateBullet()
         {
-            onReload = true;
-        }
-
-        private void CreateBullet()
-        {
-            GameObject _bulletInstance = Instantiate(bullet.gameObject, this.transform);
+            base.CreateBullet();
         }
     }
 }
