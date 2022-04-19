@@ -4,15 +4,18 @@ using UnityEngine;
 using Entities.controllers;
 using Entities.enums;
 using Entities.impl;
+using Weapons;
+using Weapons.controllers;
 using Persistent;
 
 namespace Entities.player
 {
     public class Player : Entity
     {
-        [DescriptionAttribute("Particle Systems to play when the spaceship is flying")]
         [SerializeField]
         private List<ParticleSystem> propulsionsParticles;
+        
+        private Weapon currentWeapon;
 
         protected InputReaderManager readerInput;
 
@@ -21,11 +24,12 @@ namespace Entities.player
             base.Awake();
 
             readerInput = new InputReaderManager();
+            currentWeapon = GameObject.FindObjectOfType<Weapon>();
         }
 
         private void Start() 
         {
-            EnablePropulstion();    
+            EnablePropulstion();
         }
 
         // Update is called once per frame
@@ -36,6 +40,11 @@ namespace Entities.player
             {
                 MoveCommand _moveCommand = new MoveCommand(this, (Vector3)_receivedDirection);
                 _moveCommand.Execute();
+            }
+            
+            if(currentWeapon != null)
+            {
+                currentWeapon.Process();
             }
         }
 
