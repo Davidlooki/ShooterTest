@@ -14,45 +14,50 @@ namespace Entities.player
     {
         [SerializeField]
         private List<ParticleSystem> propulsionsParticles;
-        
+
         private Weapon currentWeapon;
 
         protected InputReaderManager readerInput;
 
-        public override void Awake() 
+        public override void Awake()
         {
             base.Awake();
-
-            readerInput = new InputReaderManager();
-            currentWeapon = this.GetComponent<Weapon>();
+            StateType = EntityStateType.LIVE;
         }
-
-        private void Start() 
+        private void Start()
         {
-            EnablePropulstion();
+            if(StateType != EntityStateType.DIED)
+            {
+                EnablePropulstion();
+                readerInput = new InputReaderManager();
+                currentWeapon = this.GetComponent<Weapon>();
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-            Vector3? _receivedDirection = readerInput.GetInputFromKeyboard();
-            if(_receivedDirection != null)
+            if (StateType == EntityStateType.LIVE)
             {
-                MoveCommand _moveCommand = new MoveCommand(this, (Vector3)_receivedDirection);
-                _moveCommand.Execute();
-            }
-            
-            if(currentWeapon != null)
-            {
-                currentWeapon.Action();
+                Vector3? _receivedDirection = readerInput.GetInputFromKeyboard();
+                if (_receivedDirection != null)
+                {
+                    MoveCommand _moveCommand = new MoveCommand(this, (Vector3)_receivedDirection);
+                    _moveCommand.Execute();
+                }
+
+                if (currentWeapon != null)
+                {
+                    currentWeapon.Action();
+                }
             }
         }
 
         protected void EnablePropulstion()
         {
-            if(propulsionsParticles != null)
+            if (propulsionsParticles != null)
             {
-                foreach(ParticleSystem _propulsion in propulsionsParticles)
+                foreach (ParticleSystem _propulsion in propulsionsParticles)
                 {
                     _propulsion.Play();
                 }
@@ -61,9 +66,9 @@ namespace Entities.player
 
         protected void DisablePropulsion()
         {
-            if(propulsionsParticles != null)
+            if (propulsionsParticles != null)
             {
-                foreach(ParticleSystem _propulsion in propulsionsParticles)
+                foreach (ParticleSystem _propulsion in propulsionsParticles)
                 {
                     _propulsion.Stop();
                 }

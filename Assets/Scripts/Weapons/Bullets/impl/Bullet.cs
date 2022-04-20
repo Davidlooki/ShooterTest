@@ -1,64 +1,68 @@
 using System.Collections;
 using UnityEngine;
+using Weapons;
 
-public abstract class Bullet : MonoBehaviour, IBullet
+namespace Weapons.Bullets.impl
 {
-    [SerializeField]
-    [Range(5, 35)]
-    private int damage = 20;
-    
-    [SerializeField]
-    private float lifespan = 1;
-
-    #region Getters/Settters
-    public Vector3 Target { get; set; }
-    public float ForceSpeed { get; set; }
-    private float Lifespan { get { return lifespan; } }
-    public float DamageValue { get { return damage; } }
-    #endregion 
-
-    private void OnEnable()
+    public abstract class Bullet : MonoBehaviour, IBullet
     {
-        StartCoroutine(CoroutineLifespan());
-    }
+        [SerializeField]
+        [Range(5, 35)]
+        private int damage = 20;
 
-    public IEnumerator CoroutineLifespan()
-    {
-        float currLifespan = Lifespan;
-        while (currLifespan >= 0)
+        [SerializeField]
+        private float lifespan = 1;
+
+        #region Getters/Settters
+        public Vector3 Target { get; set; }
+        public float ForceSpeed { get; set; }
+        private float Lifespan { get { return lifespan; } }
+        public float DamageValue { get { return damage; } }
+        #endregion
+
+        private void OnEnable()
         {
-            currLifespan -= Time.deltaTime;
-            Move();
-            yield return null;
+            StartCoroutine(CoroutineLifespan());
         }
 
-        DestroyBullet();
-    }
+        public IEnumerator CoroutineLifespan()
+        {
+            float currLifespan = Lifespan;
+            while (currLifespan >= 0)
+            {
+                currLifespan -= Time.deltaTime;
+                Move();
+                yield return null;
+            }
 
-    public void Move()
-    {
-        this.transform.position += Vector3.forward * (Time.deltaTime * ForceSpeed);
-    }
+            DestroyBullet();
+        }
 
-    public void ApplyDamage()
-    {
-        //TODO - NOTIFY the Observer object with the object got hit
-        Debug.Log("GET HIT");
-        DestroyBullet();
-    }
+        public void Move()
+        {
+            this.transform.position += Vector3.forward * (Time.deltaTime * ForceSpeed);
+        }
 
-    public virtual void DestroyBullet()
-    {
-        DestroyImmediate(this.gameObject);
-    }
-    private void OnCollisionEnter(Collision other)
-    {
-        //TODO - if the OTHER is different from PARENT
-        ApplyDamage();
-    }
+        public void ApplyDamage()
+        {
+            //TODO - NOTIFY the Observer object with the object got hit
+            Debug.Log("GET HIT");
+            DestroyBullet();
+        }
 
-    private void OnDestroy() 
-    {
-        StopCoroutine(CoroutineLifespan());    
+        public virtual void DestroyBullet()
+        {
+            DestroyImmediate(this.gameObject);
+        }
+        private void OnCollisionEnter(Collision other)
+        {
+            //TODO - if the OTHER is different from PARENT
+            ApplyDamage();
+        }
+
+        private void OnDestroy()
+        {
+            StopCoroutine(CoroutineLifespan());
+        }
     }
 }

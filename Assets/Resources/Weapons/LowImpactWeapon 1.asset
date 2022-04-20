@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c307f50d64b24fe68b505a4ba74db83, type: 3}
   m_Name: LowImpactWeapon 1
   m_EditorClassIdentifier: 
-  fireRange: 5
+  weaponName: Low Impact
   forceSpeed: 3
-  maxAmmo: 10
   fireIntervalTime: 2
   bulletObject: {fileID: 8208443024465136707, guid: d3bb9a3e2cdd840f1b5814504d98ecb0,
     type: 3}

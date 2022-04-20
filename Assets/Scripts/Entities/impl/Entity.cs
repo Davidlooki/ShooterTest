@@ -14,7 +14,7 @@ namespace Entities.impl
 
         public Transform entityTransform { get; set; }
 
-        private EntityStateType currentState;
+        private EntityStateType stateType;
 
         public virtual void Awake()
         {
@@ -29,7 +29,13 @@ namespace Entities.impl
         public int Life
         {
             get { return life; }
-            set { life = value; }
+            protected set { life = value; }
+        }
+
+        public EntityStateType StateType
+        {
+            get { return stateType; }
+            set { stateType = value; }
         }
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c307f50d64b24fe68b505a4ba74db83, type: 3}
   m_Name: HighImpactWeapon
   m_EditorClassIdentifier: 
+  weaponName: High Impact
   forceSpeed: 2
   fireIntervalTime: 5
   bulletObject: {fileID: 8208443024465136707, guid: 545289098c0da45d290304f4d4074a94,

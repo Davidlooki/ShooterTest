@@ -1,5 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using Managers.controllers;
+
+using Weapons.Bullets.impl;
+using Weapons.serializable;
 
 namespace Weapons
 {
@@ -32,6 +36,18 @@ namespace Weapons
             }
         }
 
+        private void OnEnable() 
+        {
+            if(UIManager.Instance.InGame != null)
+                UIManager.Instance.InGame.SetWeaponName(weaponData.WeaponName);
+        }
+
+        private void OnDisable() 
+        {
+            if(UIManager.Instance != null)
+                UIManager.Instance.InGame.SetWeaponName("NO WEAPON");
+        }
+
         public IEnumerator CoroutineFireInterval()
         {
             currentFireInterval = WeaponData.FireIntervalTime;
@@ -48,6 +64,7 @@ namespace Weapons
         {
             if (bullet != null)
             {
+                //TODO - GET OBJECT FROM POOLMANAGER
                 GameObject _bulletInstance = Instantiate(bullet.gameObject);
                 
                 Vector3 _offsetPosition = this.transform.position + (Vector3.forward * .5f);
