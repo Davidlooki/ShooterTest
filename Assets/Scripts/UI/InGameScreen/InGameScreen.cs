@@ -40,6 +40,7 @@ namespace UI.InGameScreen
             _widthLifeBar.x = (_life * originalLifeBarWidth) / 2700;
 
             lifeBar.sizeDelta = _widthLifeBar;
+            Debug.Log("Set Life");
         }
 
         public void SetWeaponName(string _name)

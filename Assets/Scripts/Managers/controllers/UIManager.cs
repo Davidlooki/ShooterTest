@@ -18,8 +18,8 @@ namespace Managers.controllers
             {
                 if (inGameScreen)
                     return inGameScreen;
-                else
-                    throw new Exception("In Game Screen not found.");
+                
+                return null;
             }
         }
     }

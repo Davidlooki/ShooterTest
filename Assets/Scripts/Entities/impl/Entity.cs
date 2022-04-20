@@ -14,7 +14,7 @@ namespace Entities.impl
 
         public Transform entityTransform { get; set; }
 
-        private EntityStateType stateType;
+        protected EntityStateType stateType;
 
         public virtual void Awake()
         {

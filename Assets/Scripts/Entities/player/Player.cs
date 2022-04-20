@@ -1,12 +1,15 @@
+using System.Globalization;
 using System.ComponentModel;
 using System.Collections.Generic;
 using UnityEngine;
+
+using Managers.controllers;
 using Entities.controllers;
 using Entities.enums;
 using Entities.impl;
+
 using Weapons;
 using Weapons.controllers;
-using Persistent;
 
 namespace Entities.player
 {
@@ -73,6 +76,33 @@ namespace Entities.player
                     _propulsion.Stop();
                 }
             }
+        }
+
+        public void ApplyDamage(int _damage)
+        {
+            if(StateType == EntityStateType.LIVE)
+                StateType = EntityStateType.HIT;
+            
+            Life -= _damage;
+            
+            if(UIManager.Instance)
+                UIManager.Instance.InGame.SetPlayerLifeBar(Life);
+            
+            if(Life <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                StateType = EntityStateType.LIVE;
+            }
+        }
+
+        private void Die()
+        {
+            StateType = EntityStateType.DIED;
+            DisablePropulsion();
+            DestroyImmediate(this.gameObject);
         }
     }
 }

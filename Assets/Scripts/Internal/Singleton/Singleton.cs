@@ -16,7 +16,7 @@ namespace Internal.Singleton
             {
                 if(isQuitting)
                     return null;
-
+                
                 if (instance == null)
                 {
                     instance = FindObjectOfType<T>();
@@ -25,12 +25,6 @@ namespace Internal.Singleton
                 }
                 return instance;
             }
-        }
-
-        public virtual void Awake()
-        {
-            if (instance != null)
-                Destroy(this.gameObject);
         }
 
         private void OnDestroy() 
