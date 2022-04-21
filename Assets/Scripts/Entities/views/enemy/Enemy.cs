@@ -14,8 +14,7 @@ namespace Entities.views.enemy
         [SerializeField]
         private float speedMove = 0.1f;
 
-        [SerializeField]
-        Weapon currentWeapon;
+        protected Weapon currentWeapon;
 
         private void OnEnable()
         {
@@ -27,7 +26,7 @@ namespace Entities.views.enemy
         {
             if (StateType == enums.EntityStateType.LIVE)
             {
-                this.transform.position += Vector3.forward * (speedMove * Time.deltaTime);
+                this.transform.position += this.transform.forward * (speedMove * Time.deltaTime);
             }
         }
         

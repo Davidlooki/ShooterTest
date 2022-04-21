@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 336639308038916832}
   - component: {fileID: 336639308038916839}
+  - component: {fileID: 661653144}
+  - component: {fileID: 661653145}
   m_Layer: 0
   m_Name: Enemy01
   m_TagString: Untagged
@@ -48,6 +50,34 @@ CapsuleCollider:
   m_Height: 0.08
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.01}
+--- !u!114 &661653144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336639308038916833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60548db4ad70b489bbcbf1b1d5e24256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myName: Enemy
+  life: 500
+  speedMove: 0.2
+--- !u!114 &661653145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336639308038916833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c540c1468f99433d9e93e04c0b26ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: bac33496e708a4fca9de634f96ab5855, type: 2}
 --- !u!1 &2697506823349362550
 GameObject:
   m_ObjectHideFlags: 0
