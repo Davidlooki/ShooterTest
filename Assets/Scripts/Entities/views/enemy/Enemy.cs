@@ -50,8 +50,8 @@ namespace Entities.views.enemy
             
             if(UIManager.Instance)
                 UIManager.Instance.InGame.SetStrongEnemyKills(1);
-
-            DestroyImmediate(this.gameObject);
+            //TODO - ON PollManager enable that object
+            Destroy(this.gameObject);
         }
     }
 }

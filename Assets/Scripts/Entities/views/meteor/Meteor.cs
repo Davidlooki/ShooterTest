@@ -24,7 +24,7 @@ namespace Entities.views.meteor
         {
             if (StateType != enums.EntityStateType.DIED)
             {
-                this.transform.position += Vector3.forward * (speedMove * Time.deltaTime);
+                this.transform.position += this.transform.forward * (speedMove * Time.deltaTime);
             }
         }
 
@@ -42,8 +42,9 @@ namespace Entities.views.meteor
         public override void Die()
         {
             base.Die();
-            
-            DestroyImmediate(this.gameObject);
+
+            //TODO - ON PollManager disable that object
+            Destroy(this.gameObject);
         }
 
         public int Damage
