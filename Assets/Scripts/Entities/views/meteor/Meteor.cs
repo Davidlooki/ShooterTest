@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Entities.impl;
-using Entities.player;
+using Entities.views.player;
 
-namespace Entities.meteor
+namespace Entities.views.meteor
 {
     public class Meteor : Entity
     {
@@ -15,12 +15,9 @@ namespace Entities.meteor
         [SerializeField]
         private int damage = 20;
 
-        Entity _entity;
-
         private void OnEnable()
         {
             StateType = enums.EntityStateType.LIVE;
-            _entity = FindObjectOfType<Player>();
         }
 
         private void Update()
@@ -37,14 +34,15 @@ namespace Entities.meteor
             if (_entObj != null)
             {
                 Debug.Log("COLLIDED TO " + _entObj.MyName);
-                ((Player)_entity).ApplyDamage(damage);
+                ((Player)_entObj).ApplyDamage(damage);
                 Die();
             }
         }
 
-        private void Die()
+        public override void Die()
         {
-            StateType = enums.EntityStateType.DIED;
+            base.Die();
+            
             DestroyImmediate(this.gameObject);
         }
 

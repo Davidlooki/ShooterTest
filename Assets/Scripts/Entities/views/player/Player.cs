@@ -11,7 +11,7 @@ using Entities.impl;
 using Weapons;
 using Weapons.controllers;
 
-namespace Entities.player
+namespace Entities.views.player
 {
     public class Player : Entity
     {
@@ -78,12 +78,9 @@ namespace Entities.player
             }
         }
 
-        public void ApplyDamage(int _damage)
+        public override void ApplyDamage(int _damage)
         {
-            if(StateType == EntityStateType.LIVE)
-                StateType = EntityStateType.HIT;
-            
-            Life -= _damage;
+            base.ApplyDamage(_damage);
             
             if(UIManager.Instance)
                 UIManager.Instance.InGame.SetPlayerLifeBar(Life);
@@ -98,9 +95,10 @@ namespace Entities.player
             }
         }
 
-        private void Die()
+        public override void Die()
         {
-            StateType = EntityStateType.DIED;
+            base.Die();
+            
             DisablePropulsion();
             DestroyImmediate(this.gameObject);
         }

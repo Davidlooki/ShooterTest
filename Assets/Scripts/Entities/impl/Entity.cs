@@ -32,6 +32,19 @@ namespace Entities.impl
             protected set { life = value; }
         }
 
+        public virtual void ApplyDamage(int _damage)
+        {
+            if(StateType == EntityStateType.LIVE)
+                StateType = EntityStateType.HIT;
+            
+            Life -= _damage;
+        }
+
+        public virtual void Die()
+        {
+            StateType = enums.EntityStateType.DIED;
+        }
+
         public EntityStateType StateType
         {
             get { return stateType; }

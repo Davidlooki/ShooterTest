@@ -17,7 +17,7 @@ namespace Weapons.Bullets.impl
         public Vector3 Target { get; set; }
         public float ForceSpeed { get; set; }
         private float Lifespan { get { return lifespan; } }
-        public float DamageValue { get { return damage; } }
+        public int DamageValue { get { return damage; } }
         #endregion
 
         private void OnEnable()
@@ -46,17 +46,17 @@ namespace Weapons.Bullets.impl
         public void ApplyDamage()
         {
             //TODO - NOTIFY the Observer object with the object got hit
-            Debug.Log("GET HIT");
+            Debug.Log("HIT");
             DestroyBullet();
         }
 
         public virtual void DestroyBullet()
         {
-            DestroyImmediate(this.gameObject);
+            Destroy(this.gameObject);
         }
         private void OnCollisionEnter(Collision other)
         {
-            //TODO - if the OTHER is different from PARENT
+            Debug.Log("Collided with " + other.transform.name);
             ApplyDamage();
         }
 
