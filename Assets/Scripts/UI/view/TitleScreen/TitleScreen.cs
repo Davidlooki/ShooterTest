@@ -8,9 +8,9 @@ namespace UI.TitleScreen
 {
     public class TitleScreen : Singleton<TitleScreen>
     {
-        public void CallbackStart()
+        public void BtnStart()
         {
-            UIManager.Instance.SetUI(Managers.GameStateType.INGAME);
+            UIManager.Instance.SetUIByGameState(Managers.GameStateType.INGAME);
         }
     }
 }

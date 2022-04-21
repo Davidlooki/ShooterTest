@@ -4,6 +4,7 @@ using Internal.Singleton;
 
 using UI.TitleScreen;
 using UI.InGameScreen;
+using UI.GameOverDialog.view;
 
 using Managers;
 
@@ -13,43 +14,44 @@ namespace Managers.controllers
     {
         [SerializeField]
         private InGameScreen inGameScreen;
-        
+
         [SerializeField]
         private TitleScreen titleScreen;
 
-        public InGameScreen InGame
+        [SerializeField]
+        private GameOverDialog gameOverDialog;
+
+        public InGameScreen InGame => inGameScreen;
+
+        public TitleScreen Title => titleScreen;
+
+        public GameOverDialog GameOver => gameOverDialog;
+
+        private void Start()
         {
-            get
-            {
-                return inGameScreen;
-            }
+            SetUIByGameState(GameStateType.TITLE);
         }
 
-        public TitleScreen Title
+        public void SetUIByGameState(GameStateType _gameStateType)
         {
-            get
+            switch (_gameStateType)
             {
-                return titleScreen;
-            }
-        }
-
-        private void Start() 
-        {
-            SetUI(GameStateType.TITLE);
-        }
-
-        public void SetUI(GameStateType _gameStateType)
-        {
-            switch(_gameStateType)
-            {
-                case(GameStateType.TITLE):  
+                case (GameStateType.TITLE):
                     Title.gameObject.SetActive(true);
+                    GameOver.gameObject.SetActive(false);
                     InGame.gameObject.SetActive(false);
                     break;
-                case(GameStateType.INGAME):
-                    Title.gameObject.SetActive(false);
+                case (GameStateType.INGAME):
                     InGame.gameObject.SetActive(true);
+                    Title.gameObject.SetActive(false);
+                    GameOver.gameObject.SetActive(false);
                     break;
+                case (GameStateType.GAMEOVER):
+                    GameOver.gameObject.SetActive(true);
+                    Title.gameObject.SetActive(false);
+                    InGame.gameObject.SetActive(false);
+                    break;
+                
             }
         }
     }
