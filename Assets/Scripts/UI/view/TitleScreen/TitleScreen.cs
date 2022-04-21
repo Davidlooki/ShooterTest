@@ -1,0 +1,16 @@
+using UnityEngine;
+
+using Internal.Singleton;
+
+using Managers.controllers;
+
+namespace UI.TitleScreen
+{
+    public class TitleScreen : Singleton<TitleScreen>
+    {
+        public void CallbackStart()
+        {
+            UIManager.Instance.SetUI(Managers.GameStateType.INGAME);
+        }
+    }
+}

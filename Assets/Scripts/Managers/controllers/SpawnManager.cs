@@ -4,39 +4,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using Internal.Singleton;
 
-public class SpawnManager : Singleton<SpawnManager>
+namespace Managers.controllers
 {
-    [SerializeField]
-    private string tagSpawnPoints = "Respawn";
-
-    [SerializeField]
-    private GameObject entitiesParent;
-
-    internal bool isReady = false;
-    internal List<GameObject> spawnPoints;
-    
-    private void Awake()
+    public class SpawnManager : Singleton<SpawnManager>
     {
-        spawnPoints = GameObject.FindGameObjectsWithTag(tagSpawnPoints).ToList();
-        isReady = true;
-    }
+        [SerializeField]
+        private string tagSpawnPoints = "Respawn";
 
-    public void CreateAsset(GameObject _asset)
-    {
-        //TODO - ON PollManager enable that object
-        GameObject _instance = Instantiate(_asset, SelectSpawn());
-        _instance.transform.SetParent(entitiesParent.transform);
-    }
-    public Transform SelectSpawn()
-    {
-        return spawnPoints[RandomIndex].transform;
-    }
+        [SerializeField]
+        private GameObject entitiesParent;
 
-    private int RandomIndex
-    {
-        get
+        internal bool isReady = false;
+        internal List<GameObject> spawnPoints;
+
+        private void Awake()
         {
-            return Random.Range(0, (spawnPoints.Count - 1));
+            spawnPoints = GameObject.FindGameObjectsWithTag(tagSpawnPoints).ToList();
+            isReady = true;
+        }
+
+        public void CreateAsset(GameObject _asset)
+        {
+            //TODO - ON PollManager enable that object
+            GameObject _instance = Instantiate(_asset, SelectSpawn());
+            _instance.transform.SetParent(entitiesParent.transform);
+        }
+        public Transform SelectSpawn()
+        {
+            return spawnPoints[RandomIndex].transform;
+        }
+
+        private int RandomIndex
+        {
+            get
+            {
+                return Random.Range(0, (spawnPoints.Count - 1));
+            }
         }
     }
+
+
 }

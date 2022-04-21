@@ -1,9 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UI.InGameScreen;
+
 using Internal.Singleton;
+
+using UI.TitleScreen;
+using UI.InGameScreen;
+
+using Managers;
 
 namespace Managers.controllers
 {
@@ -11,15 +13,43 @@ namespace Managers.controllers
     {
         [SerializeField]
         private InGameScreen inGameScreen;
+        
+        [SerializeField]
+        private TitleScreen titleScreen;
 
         public InGameScreen InGame
         {
             get
             {
-                if (inGameScreen)
-                    return inGameScreen;
-                
-                return null;
+                return inGameScreen;
+            }
+        }
+
+        public TitleScreen Title
+        {
+            get
+            {
+                return titleScreen;
+            }
+        }
+
+        private void Start() 
+        {
+            SetUI(GameStateType.TITLE);
+        }
+
+        public void SetUI(GameStateType _gameStateType)
+        {
+            switch(_gameStateType)
+            {
+                case(GameStateType.TITLE):  
+                    Title.gameObject.SetActive(true);
+                    InGame.gameObject.SetActive(false);
+                    break;
+                case(GameStateType.INGAME):
+                    Title.gameObject.SetActive(false);
+                    InGame.gameObject.SetActive(true);
+                    break;
             }
         }
     }
