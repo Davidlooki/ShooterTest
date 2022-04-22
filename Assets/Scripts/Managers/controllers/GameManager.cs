@@ -86,7 +86,7 @@ public class GameManager : Singleton<GameManager>
     public void OnNotifyEnemyDie()
     {
         amountEnemyDies++;
-        UIManager.Instance.InGame.SetWeakEnemyKills(amountEnemyDies);
+        UIManager.Instance.InGame.SetStrongEnemyKills(amountEnemyDies);
         if(StateType == GameStateType.INGAME)
             PullObjectInScene();
     }

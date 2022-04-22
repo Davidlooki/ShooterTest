@@ -30,7 +30,7 @@ namespace Entities.impl
         public int Life
         {
             get { return life; }
-            protected set { life = value; }
+            set { life = value; }
         }
 
         public virtual void ApplyDamage(int _damage)

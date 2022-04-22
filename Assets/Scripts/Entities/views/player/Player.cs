@@ -39,8 +39,6 @@ namespace Entities.views.player
             {   
                 this.transform.position = originalPosition;
                 this.Life = originalLifeValue;
-                
-                UIManager.Instance.InGame.SetPlayerLifeBar(Life);
 
                 EnablePropulstion();
                 
@@ -115,8 +113,6 @@ namespace Entities.views.player
                 OnNotifyPlayerDie();
 
             DisablePropulsion();
-
-            //Destroy(this.gameObject);
         }
 
 
