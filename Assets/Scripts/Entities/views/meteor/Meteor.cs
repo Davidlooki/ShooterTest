@@ -22,7 +22,7 @@ namespace Entities.views.meteor
         public static event Action OnNotifyMeteorDie;
 
 
-        private void Start() 
+        private void Start()
         {
 
         }
@@ -43,7 +43,7 @@ namespace Entities.views.meteor
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision other)
         {
             Entity _entObj = other.gameObject.GetComponent<Player>();
             if (_entObj != null)
@@ -61,6 +61,7 @@ namespace Entities.views.meteor
                 _progress -= Time.deltaTime;
                 yield return null;
             }
+            StopCoroutine(CoroutineLifeSpan(0));
             Die();
         }
         public override void Die()
@@ -74,7 +75,9 @@ namespace Entities.views.meteor
                     OnNotifyMeteorDie();
                 }
             }
-            StopCoroutine("CoroutineLifeSpan");
+
+            StopCoroutine(CoroutineLifeSpan(0));
+            
             PoolManager.Instance.DisableObject(this.gameObject);
             GameManager.Instance.PullObjectInScene();
         }

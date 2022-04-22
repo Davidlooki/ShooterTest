@@ -21,19 +21,29 @@ namespace Entities.views.player
 
         private int maxKill = 0;
 
+        private Vector3 originalPosition;
+        private int originalLifeValue;
+
         protected InputReaderManager readerInput;
 
         public static event Action OnNotifyPlayerDie;
 
         private void Start()
         {
-            Init();
+            originalPosition = this.transform.position;
+            originalLifeValue = this.Life;
         }
         public void Init()
         {
             if (StateType != EntityStateType.DIED)
-            {
+            {   
+                this.transform.position = originalPosition;
+                this.Life = originalLifeValue;
+                
+                UIManager.Instance.InGame.SetPlayerLifeBar(Life);
+
                 EnablePropulstion();
+                
                 readerInput = new InputReaderManager();
                 currentWeapon = this.GetComponent<Weapon>();
             }
@@ -105,7 +115,8 @@ namespace Entities.views.player
                 OnNotifyPlayerDie();
 
             DisablePropulsion();
-            Destroy(this.gameObject);
+
+            //Destroy(this.gameObject);
         }
 
 

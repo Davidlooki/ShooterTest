@@ -1,7 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
+using Entities.impl;
 using Entities.views.enemy;
+using Entities.views.meteor;
 
 namespace Weapons.Bullets.impl
 {
@@ -51,6 +53,10 @@ namespace Weapons.Bullets.impl
         private void OnCollisionEnter(Collision other)
         {
             Debug.Log("Collided with " + other.transform.name);
+            Entity _collided = other.gameObject.GetComponent<Entity>();
+            
+            if(_collided != null)
+                _collided.ApplyDamage(DamageValue);
 
             DestroyBullet();
         }

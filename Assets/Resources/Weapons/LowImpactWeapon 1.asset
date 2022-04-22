@@ -15,5 +15,5 @@ MonoBehaviour:
   weaponName: Low Impact
   forceSpeed: 3
   fireIntervalTime: 2
-  bulletObject: {fileID: 8208443024465136707, guid: d3bb9a3e2cdd840f1b5814504d98ecb0,
+  bulletObject: {fileID: 3128993760171371360, guid: d3bb9a3e2cdd840f1b5814504d98ecb0,
     type: 3}
