@@ -10,6 +10,7 @@ namespace UI.TitleScreen
     {
         public void BtnStart()
         {
+            GameManager.Instance.StartGame();
             UIManager.Instance.SetUIByGameState(Managers.GameStateType.INGAME);
         }
     }

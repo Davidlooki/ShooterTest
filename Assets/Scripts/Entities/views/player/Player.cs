@@ -1,6 +1,6 @@
-using System.Globalization;
-using System.ComponentModel;
+using System;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 using Managers.controllers;
@@ -9,7 +9,6 @@ using Entities.enums;
 using Entities.impl;
 
 using Weapons;
-using Weapons.controllers;
 
 namespace Entities.views.player
 {
@@ -22,12 +21,13 @@ namespace Entities.views.player
 
         protected InputReaderManager readerInput;
 
-        public override void Awake()
-        {
-            base.Awake();
-            StateType = EntityStateType.LIVE;
-        }
+        public static event Action OnNotifyPlayerDie;
+
         private void Start()
+        {
+            Init();
+        }
+        public void Init()
         {
             if(StateType != EntityStateType.DIED)
             {
@@ -99,8 +99,11 @@ namespace Entities.views.player
         {
             base.Die();
             
+            if(OnNotifyPlayerDie != null)
+                OnNotifyPlayerDie();
+
             DisablePropulsion();
-            DestroyImmediate(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

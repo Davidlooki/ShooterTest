@@ -1,6 +1,4 @@
-using System.Collections.Concurrent;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Entities.impl;
 using Entities.views.player;
@@ -14,6 +12,8 @@ namespace Entities.views.meteor
 
         [SerializeField]
         private int damage = 20;
+
+        public static event Action OnNotifyMeteorDie;
 
         private void OnEnable()
         {
@@ -42,6 +42,11 @@ namespace Entities.views.meteor
         public override void Die()
         {
             base.Die();
+
+            if(OnNotifyMeteorDie != null)
+            {
+                OnNotifyMeteorDie();
+            }
 
             //TODO - ON PollManager disable that object
             Destroy(this.gameObject);

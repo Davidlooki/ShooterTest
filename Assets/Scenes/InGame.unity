@@ -478,8 +478,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83984800}
-  - component: {fileID: 83984801}
   - component: {fileID: 83984802}
+  - component: {fileID: 83984801}
+  - component: {fileID: 83984803}
+  - component: {fileID: 83984804}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -516,7 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inGameScreen: {fileID: 162374595}
   titleScreen: {fileID: 1997883806}
-  gameOverDialog: {fileID: 0}
+  gameOverDialog: {fileID: 1828222475}
 --- !u!114 &83984802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +533,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagSpawnPoints: Respawn
   entitiesParent: {fileID: 2090604708}
+--- !u!114 &83984803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83984799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9bee7e05b5a42dd89b6cfd928e9a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &83984804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83984799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063411633b9404fd09e2ec596117fd1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToPoolList:
+  - {fileID: 336639308038916833, guid: b73926b2f05e74ef4a97f4aab1c00304, type: 3}
+  - {fileID: 3643021833915990577, guid: 4b22c4ad6168d473e9d02018649152e3, type: 3}
 --- !u!1 &99672244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,7 +1735,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 582234790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1828222475}
+        m_TargetAssemblyTypeName: UI.GameOverDialog.view.GameOverDialog, Assembly-CSharp
+        m_MethodName: BtnReset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &582234790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4093,7 +4134,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1997883806}
         m_TargetAssemblyTypeName: UI.TitleScreen.TitleScreen, Assembly-CSharp
-        m_MethodName: CallbackStart
+        m_MethodName: BtnStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

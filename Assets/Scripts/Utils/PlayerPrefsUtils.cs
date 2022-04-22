@@ -5,16 +5,16 @@ using Persistent;
 
 namespace Utils
 {
-    public class PlayerPrefsUtils
+    public class PlayerPrefsUtils 
     {
         private readonly string playerName = "playerName";
-        private readonly string playerHighestScore = "playerHighestScore";
+        private readonly string playerMaxKill = "playerMaxKill";
 
         public PlayerData LoadDataFromPlayerPrefs()
         {
             PlayerData playerData = new PlayerData();
             playerData.myName = GetName();
-            playerData.highestScore = GetHighestScore();
+            playerData.playerMaxKill = GetMaxKill();
 
             return playerData;
         }
@@ -23,8 +23,11 @@ namespace Utils
         {
             if(GetName() != "") 
                 PlayerPrefs.SetString(playerName, _playerData.myName);
-            if(GetHighestScore() != -1)
-                PlayerPrefs.SetInt(playerName, _playerData.highestScore);
+            if(GetMaxKill() != -1)
+            {
+                if(GetMaxKill() < _playerData.playerMaxKill)
+                    PlayerPrefs.SetInt(playerName, _playerData.playerMaxKill);
+            }
         }
 
         private string GetName()
@@ -36,11 +39,11 @@ namespace Utils
             return "";
         }
 
-        private int GetHighestScore()
+        private int GetMaxKill()
         {
-            if (PlayerPrefs.HasKey(playerHighestScore))
+            if (PlayerPrefs.HasKey(playerMaxKill))
             {
-                return PlayerPrefs.GetInt(playerHighestScore);
+                return PlayerPrefs.GetInt(playerMaxKill);
             }
             return -1;
         }

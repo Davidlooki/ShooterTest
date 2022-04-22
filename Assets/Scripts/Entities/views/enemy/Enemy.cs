@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Entities.impl;
 using Entities.enums;
 using Managers.controllers;
 using Weapons;
-using Weapons.Bullets.impl;
 
 namespace Entities.views.enemy
 {
@@ -15,6 +13,8 @@ namespace Entities.views.enemy
         private float speedMove = 0.1f;
 
         protected Weapon currentWeapon;
+
+        public static event Action OnNotifyEnemyDie;
 
         private void OnEnable()
         {
@@ -48,8 +48,9 @@ namespace Entities.views.enemy
         {
             base.Die();
             
-            if(UIManager.Instance)
-                UIManager.Instance.InGame.SetStrongEnemyKills(1);
+            if(OnNotifyEnemyDie != null)
+                OnNotifyEnemyDie();
+            
             //TODO - ON PollManager enable that object
             Destroy(this.gameObject);
         }

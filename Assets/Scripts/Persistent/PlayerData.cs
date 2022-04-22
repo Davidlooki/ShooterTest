@@ -7,7 +7,7 @@ namespace Persistent
     {
         public string myName;
 
-        public int highestScore;
+        public int playerMaxKill;
 
         public float life;
     }

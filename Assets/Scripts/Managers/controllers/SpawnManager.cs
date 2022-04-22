@@ -25,16 +25,14 @@ namespace Managers.controllers
 
         public void CreateAsset(GameObject _asset)
         {
-            //TODO - ON PollManager enable that object
-            GameObject _instance = Instantiate(_asset, SelectSpawn());
-            _instance.transform.SetParent(entitiesParent.transform);
+            _asset.transform.SetParent(entitiesParent.transform);
         }
         public Transform SelectSpawn()
         {
-            return spawnPoints[RandomIndex].transform;
+            return spawnPoints[RandomIndexInlist].transform;
         }
 
-        private int RandomIndex
+        private int RandomIndexInlist
         {
             get
             {
