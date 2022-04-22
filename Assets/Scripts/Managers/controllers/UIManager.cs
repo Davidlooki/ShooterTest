@@ -12,6 +12,10 @@ namespace Managers.controllers
 {
     public class UIManager : Singleton<UIManager>
     {
+        
+        [SerializeField]
+        private PreloadScreen preloadScreen;
+        
         [SerializeField]
         private InGameScreen inGameScreen;
 
@@ -21,6 +25,8 @@ namespace Managers.controllers
         [SerializeField]
         private GameOverDialog gameOverDialog;
 
+        public PreloadScreen Preload => preloadScreen;
+        
         public InGameScreen InGame => inGameScreen;
 
         public TitleScreen Title => titleScreen;
@@ -38,20 +44,28 @@ namespace Managers.controllers
             {
                 case (GameStateType.TITLE):
                     Title.gameObject.SetActive(true);
+                    Preload.gameObject.SetActive(false);
                     GameOver.gameObject.SetActive(false);
                     InGame.gameObject.SetActive(false);
                     break;
                 case (GameStateType.INGAME):
                     InGame.gameObject.SetActive(true);
+                    Preload.gameObject.SetActive(false);
                     Title.gameObject.SetActive(false);
                     GameOver.gameObject.SetActive(false);
                     break;
                 case (GameStateType.GAMEOVER):
                     GameOver.gameObject.SetActive(true);
+                    Preload.gameObject.SetActive(false);
                     Title.gameObject.SetActive(false);
                     InGame.gameObject.SetActive(false);
                     break;
-                
+                case(GameStateType.PRELOAD):
+                    Preload.gameObject.SetActive(true);
+                    GameOver.gameObject.SetActive(false);
+                    Title.gameObject.SetActive(false);
+                    InGame.gameObject.SetActive(false);
+                    break;
             }
         }
     }

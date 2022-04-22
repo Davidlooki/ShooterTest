@@ -8,45 +8,49 @@ using Managers.controllers;
 using UI.GameOverDialog.vo;
 
 using Entities.views.player;
+using Entities.views.meteor;
+using Entities.views.enemy;
 using Entities.enums;
 
 using Persistent;
-using Utils;
 using Managers;
 
 public class GameManager : Singleton<GameManager>
 {   
     GameStateType gameStateType;
-    PlayerData playerData;
-    PlayerPrefs playerPrefs;
     private int amountMeteorDies = 0;
     private int amountEnemyDies = 0;
 
     private Player player;
-
-    private void Awake() 
-    {
-        PoolManager.Instance.PreparePoolObjects();
-    }
+    
+    internal PlayerData initialPlayerData;
 
     private void Start() 
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        //TODO - CLEAN UI    
+        if(player != null)
+        {
+            player.MyName = initialPlayerData.myName;
+            player.MaxKill = initialPlayerData.playerMaxKill;
+        }
+        Enemy.OnNotifyEnemyDie += OnNotifyEnemyDie;
+        Meteor.OnNotifyMeteorDie += OnNotifyMeteorDie;
+        Player.OnNotifyPlayerDie += OnNotifyPlayerDie;
     }
-
 
     // Start is called before the first frame update
     public void Init()
     {
         StateType = GameStateType.TITLE;
         amountEnemyDies = amountEnemyDies = 0;
+
+        UIManager.Instance.SetUIByGameState(StateType);
     }
 
     public GameStateType StateType
     {
         get { return gameStateType; }
-        private set { gameStateType = value; }
+        set { gameStateType = value; }
     }
 
     public void StartGame()
@@ -62,6 +66,13 @@ public class GameManager : Singleton<GameManager>
     {
         GameObject _pooledObject = PoolManager.Instance.GetPoolObject();
         SpawnManager.Instance.CreateAsset(_pooledObject);
+    }
+
+    public void SetDataToPlayer(PlayerData _dataLoaded)
+    {
+        initialPlayerData = new PlayerData();
+        initialPlayerData.myName = _dataLoaded.myName;
+        initialPlayerData.playerMaxKill = _dataLoaded.playerMaxKill;
     }
 
     public void OnNotifyMeteorDie()
@@ -88,5 +99,12 @@ public class GameManager : Singleton<GameManager>
                                                                 Init(); 
                                                                 });
         UIManager.Instance.GameOver.SetValues(_gameOverVO);
+    }
+
+    private void OnDestroy() 
+    {
+        Enemy.OnNotifyEnemyDie -= OnNotifyEnemyDie;
+        Meteor.OnNotifyMeteorDie -= OnNotifyMeteorDie;
+        Player.OnNotifyPlayerDie -= OnNotifyPlayerDie;
     }
 }

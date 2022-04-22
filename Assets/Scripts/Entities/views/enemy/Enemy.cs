@@ -51,8 +51,7 @@ namespace Entities.views.enemy
             if(OnNotifyEnemyDie != null)
                 OnNotifyEnemyDie();
             
-            //TODO - ON PollManager enable that object
-            Destroy(this.gameObject);
+            PoolManager.Instance.DisableObject(this.gameObject);
         }
     }
 }

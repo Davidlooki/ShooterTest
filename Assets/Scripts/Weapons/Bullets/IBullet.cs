@@ -8,7 +8,6 @@ namespace Weapons
     {
         IEnumerator CoroutineLifespan();
         void Move();
-        void ApplyDamage();
         void DestroyBullet();
     }
 

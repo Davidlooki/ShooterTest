@@ -26,6 +26,9 @@ namespace Managers.controllers
         public void CreateAsset(GameObject _asset)
         {
             _asset.transform.SetParent(entitiesParent.transform);
+            
+            Transform _spawnPoint = SelectSpawn();
+            _asset.transform.SetPositionAndRotation(_spawnPoint.transform.position, _spawnPoint.transform.rotation);
         }
         public Transform SelectSpawn()
         {

@@ -28,6 +28,15 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
+    public void DisableObject(GameObject _objToDisable)
+    {
+        foreach(GameObject _disableObj in pooledObjectsList)
+        {
+            if(_disableObj == _objToDisable)
+                _disableObj.SetActive(false);
+        }
+    }
+
     public void DisableAllPooledObjects()
     {
         foreach(GameObject pooledObj in pooledObjectsList)

@@ -24,6 +24,7 @@ namespace Entities.impl
         public string MyName
         {
             get { return myName; }
+            set { myName = value; }
         }
 
         public int Life
@@ -34,9 +35,9 @@ namespace Entities.impl
 
         public virtual void ApplyDamage(int _damage)
         {
-            if(StateType == EntityStateType.LIVE)
+            if (StateType == EntityStateType.LIVE)
                 StateType = EntityStateType.HIT;
-            
+
             Life -= _damage;
         }
 

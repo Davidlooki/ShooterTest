@@ -19,6 +19,8 @@ namespace Entities.views.player
 
         private Weapon currentWeapon;
 
+        private int maxKill = 0;
+
         protected InputReaderManager readerInput;
 
         public static event Action OnNotifyPlayerDie;
@@ -29,7 +31,7 @@ namespace Entities.views.player
         }
         public void Init()
         {
-            if(StateType != EntityStateType.DIED)
+            if (StateType != EntityStateType.DIED)
             {
                 EnablePropulstion();
                 readerInput = new InputReaderManager();
@@ -81,11 +83,11 @@ namespace Entities.views.player
         public override void ApplyDamage(int _damage)
         {
             base.ApplyDamage(_damage);
-            
-            if(UIManager.Instance)
+
+            if (UIManager.Instance)
                 UIManager.Instance.InGame.SetPlayerLifeBar(Life);
-            
-            if(Life <= 0)
+
+            if (Life <= 0)
             {
                 Die();
             }
@@ -98,12 +100,19 @@ namespace Entities.views.player
         public override void Die()
         {
             base.Die();
-            
-            if(OnNotifyPlayerDie != null)
+
+            if (OnNotifyPlayerDie != null)
                 OnNotifyPlayerDie();
 
             DisablePropulsion();
             Destroy(this.gameObject);
+        }
+
+
+        public int MaxKill
+        {
+            get { return maxKill; }
+            set { maxKill = value; }
         }
     }
 }

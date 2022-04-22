@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
-using Weapons;
+
+using Entities.views.enemy;
 
 namespace Weapons.Bullets.impl
 {
@@ -43,13 +44,6 @@ namespace Weapons.Bullets.impl
             this.transform.position += Vector3.forward * (Time.deltaTime * ForceSpeed);
         }
 
-        public void ApplyDamage()
-        {
-            //TODO - NOTIFY the Observer object with the object got hit
-            Debug.Log("HIT");
-            DestroyBullet();
-        }
-
         public virtual void DestroyBullet()
         {
             Destroy(this.gameObject);
@@ -57,7 +51,8 @@ namespace Weapons.Bullets.impl
         private void OnCollisionEnter(Collision other)
         {
             Debug.Log("Collided with " + other.transform.name);
-            ApplyDamage();
+
+            DestroyBullet();
         }
 
         private void OnDestroy()
