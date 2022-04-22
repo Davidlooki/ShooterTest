@@ -19,8 +19,11 @@ namespace Entities.views.enemy
         private void OnEnable()
         {
             StateType = EntityStateType.LIVE;
+            
             currentWeapon = this.GetComponent<Weapon>();
+            currentWeapon.Action();
         }
+
 
         private void Update()
         {
@@ -52,6 +55,8 @@ namespace Entities.views.enemy
                 OnNotifyEnemyDie();
             
             PoolManager.Instance.DisableObject(this.gameObject);
+
+            GameManager.Instance.PullObjectInScene();
         }
     }
 }

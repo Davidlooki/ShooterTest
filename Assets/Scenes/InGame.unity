@@ -560,7 +560,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToPoolList:
-  - {fileID: 336639308038916833, guid: b73926b2f05e74ef4a97f4aab1c00304, type: 3}
   - {fileID: 3643021833915990577, guid: 4b22c4ad6168d473e9d02018649152e3, type: 3}
 --- !u!114 &83984805
 MonoBehaviour:

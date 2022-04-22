@@ -79,25 +79,30 @@ public class GameManager : Singleton<GameManager>
     {
         amountMeteorDies++;
         UIManager.Instance.InGame.SetWeakEnemyKills(amountMeteorDies);
-        PullObjectInScene();
+        if(StateType == GameStateType.INGAME)
+            PullObjectInScene();
     }
 
     public void OnNotifyEnemyDie()
     {
         amountEnemyDies++;
         UIManager.Instance.InGame.SetWeakEnemyKills(amountEnemyDies);
-        PullObjectInScene();
+        if(StateType == GameStateType.INGAME)
+            PullObjectInScene();
     }
 
     public void OnNotifyPlayerDie()
     {
+        PoolManager.Instance.DisableAllPooledObjects();
+
         StateType = GameStateType.GAMEOVER;
-        UIManager.Instance.SetUIByGameState(StateType);
         GameOverDialogVO _gameOverVO = new GameOverDialogVO(amountMeteorDies.ToString(),
                                                             amountEnemyDies.ToString(),
                                                             () => {
                                                                 Init(); 
                                                                 });
+        
+        UIManager.Instance.SetUIByGameState(StateType);
         UIManager.Instance.GameOver.SetValues(_gameOverVO);
     }
 

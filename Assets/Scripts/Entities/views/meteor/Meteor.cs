@@ -14,23 +14,27 @@ namespace Entities.views.meteor
         [SerializeField]
         private int damage = 20;
 
+        [SerializeField]
         private float lifeSpan = 15;
 
         private bool wasKilled = false;
 
         public static event Action OnNotifyMeteorDie;
 
+
+        private void Start() 
+        {
+
+        }
+
         private void OnEnable()
         {
             wasKilled = false;
             StateType = enums.EntityStateType.LIVE;
+
             StartCoroutine(CoroutineLifeSpan(lifeSpan));
         }
 
-        private void OnDisable() 
-        {
-            StopCoroutine(CoroutineLifeSpan());    
-        }
         private void Update()
         {
             if (StateType != enums.EntityStateType.DIED)
@@ -44,16 +48,15 @@ namespace Entities.views.meteor
             Entity _entObj = other.gameObject.GetComponent<Player>();
             if (_entObj != null)
             {
-                Debug.Log("COLLIDED TO " + _entObj);
                 ((Player)_entObj).ApplyDamage(damage);
                 Die();
             }
         }
 
-        public IEnumerator CoroutineLifeSpan(float lifeSpan = 0)
+        public IEnumerator CoroutineLifeSpan(float lifeSpan)
         {
             float _progress = lifeSpan;
-            while (_progress <= 0)
+            while (_progress > 0)
             {
                 _progress -= Time.deltaTime;
                 yield return null;
@@ -71,7 +74,9 @@ namespace Entities.views.meteor
                     OnNotifyMeteorDie();
                 }
             }
+            StopCoroutine("CoroutineLifeSpan");
             PoolManager.Instance.DisableObject(this.gameObject);
+            GameManager.Instance.PullObjectInScene();
         }
 
         public int Damage

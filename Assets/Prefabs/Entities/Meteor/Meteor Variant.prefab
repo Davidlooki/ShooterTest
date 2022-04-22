@@ -134,7 +134,7 @@ TrailRenderer:
   m_GameObject: {fileID: 3643021833915990577}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -166,7 +166,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.3
@@ -175,7 +175,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.84127045
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -183,8 +183,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.24468744
-        value: 0.4718946
+        time: 0.23444879
+        value: 0.392526
         inSlope: -1.1076196
         outSlope: -1.1076196
         tangentMode: 0
@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myName: Meteor
-  life: 3
+  life: 10
   speedMove: 2
   damage: 500
+  lifeSpan: 5

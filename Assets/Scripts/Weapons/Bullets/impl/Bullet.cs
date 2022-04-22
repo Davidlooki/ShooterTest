@@ -5,10 +5,10 @@ using Entities.views.enemy;
 
 namespace Weapons.Bullets.impl
 {
-    public abstract class Bullet : MonoBehaviour, IBullet
+    public class Bullet : MonoBehaviour, IBullet
     {
         [SerializeField]
-        [Range(5, 35)]
+        [Range(5, 500)]
         private int damage = 20;
 
         [SerializeField]

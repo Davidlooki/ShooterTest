@@ -35,6 +35,7 @@ public class PreloadSystem : Singleton<PreloadSystem>
     private void LoadPlayerData()
     {
         var _data = PlayerPrefsUtils.LoadDataFromPlayerPrefs();
-        Debug.Log(_data.myName);
+        
+        GameManager.Instance.SetDataToPlayer(_data);
     }
 }

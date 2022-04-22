@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myName: Enemy
-  life: 500
+  life: 250
   speedMove: 0.2
 --- !u!114 &661653145
 MonoBehaviour:
