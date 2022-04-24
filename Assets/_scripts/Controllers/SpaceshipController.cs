@@ -65,7 +65,6 @@ namespace CMGA.Shooter.Controllers{
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Trigger " + other.name);
             if(other.CompareTag("Enemy")){
                 HealthController.TakeDamage(other.GetComponent<Enemy>().BaseDamage);
             }
