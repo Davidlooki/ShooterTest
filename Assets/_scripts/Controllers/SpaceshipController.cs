@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CMGA.Shooter.Controllers.Enemies;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,6 +61,14 @@ namespace CMGA.Shooter.Controllers{
             Gizmos.DrawWireSphere(aimTarget.position, .5f);
             Gizmos.DrawSphere(aimTarget.position, .15f);
 
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("Trigger " + other.name);
+            if(other.CompareTag("Enemy")){
+                HealthController.TakeDamage(other.GetComponent<Enemy>().BaseDamage);
+            }
         }
     }
 }

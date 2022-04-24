@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 250995183241385458}
   - component: {fileID: 250995183241385456}
   - component: {fileID: 3691557810926877530}
+  - component: {fileID: 4364777592716479292}
   m_Layer: 0
   m_Name: Holder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,6 +91,12 @@ MonoBehaviour:
   OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
+  OnInvincibilityStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInvincibilityFinish:
+    m_PersistentCalls:
+      m_Calls: []
   DestroyOnNoLife: 1
 --- !u!135 &3691557810926877530
 SphereCollider:
@@ -104,6 +111,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.7
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4364777592716479292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250995183241385469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f762f930a4cf84469a70201f7eca7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseDamage: 1
 --- !u!1 &3465640834062082912
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +136,7 @@ GameObject:
   - component: {fileID: 6530809165046518544}
   m_Layer: 0
   m_Name: MeteorMoving
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05b2e207698f344c8802f350deea6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseDamage: 1
 --- !u!1 &6821901111247978975
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,9 +183,10 @@ GameObject:
   - component: {fileID: 7352728992510990504}
   - component: {fileID: 4743895228448748985}
   - component: {fileID: 5847132052830976998}
+  - component: {fileID: 1403802153319935694}
   m_Layer: 0
   m_Name: Holder (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,6 +262,12 @@ MonoBehaviour:
   OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
+  OnInvincibilityStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInvincibilityFinish:
+    m_PersistentCalls:
+      m_Calls: []
   DestroyOnNoLife: 1
 --- !u!135 &5847132052830976998
 SphereCollider:
@@ -254,6 +282,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.7
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1403802153319935694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821901111247978975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f762f930a4cf84469a70201f7eca7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseDamage: 1
 --- !u!1001 &250995184379391894
 PrefabInstance:
   m_ObjectHideFlags: 0

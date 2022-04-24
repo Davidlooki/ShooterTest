@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CMGA.Shooter.Controllers;
+using CMGA.Shooter.Utils;
 using UnityEngine;
 namespace CMGA.Shooter.Managers{
     public class GameManager : MonoBehaviour
@@ -11,19 +12,18 @@ namespace CMGA.Shooter.Managers{
         public float InvincibilityDuration = 3f;
 
         private void Start(){
-            if(Instance != null) {
-                Destroy(this);
-                return;
-            }
-
             Instance = this;
-            DontDestroyOnLoad(this);
 
             InvokeRepeating(nameof(SpawnEnemy), 1f, 1f);
         }
 
         private void SpawnEnemy(){
             EnemySpawner.Instance.Spawn();
+        }
+
+        public void GameOver(){
+            CancelInvoke(nameof(SpawnEnemy));
+            UIController.Instance.GoToTitleScene();
         }
 
         
