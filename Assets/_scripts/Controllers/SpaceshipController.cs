@@ -9,11 +9,12 @@ namespace CMGA.Shooter.Controllers{
         public float lookSpeed;
         public Transform shipModel;
         public Transform aimTarget;
+        public Joystick joystick;
 
         void Update()
         {
-            float h = Input.GetAxis("Mouse X");
-            float v = Input.GetAxis("Mouse Y");
+            float h = joystick.Direction.x;
+            float v = joystick.Direction.y;
 
             LocalMove(h, v, xySpeed);
             RotationLook(h,v, lookSpeed);
