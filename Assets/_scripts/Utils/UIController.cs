@@ -11,6 +11,10 @@ namespace CMGA.Shooter.Utils{
             SceneManager.LoadScene(Scenes.GAMEPLAY_SCENE);
         }
 
+        public void GoToTitleScene(){
+            SceneManager.LoadScene(Scenes.TITLESCREEN_SCENE);
+        }
+
         public void OpenGithubRepoLink(){
             Application.OpenURL("https://github.com/CaioMGA/ShooterTest/tree/test-CaioMGA");
         }
