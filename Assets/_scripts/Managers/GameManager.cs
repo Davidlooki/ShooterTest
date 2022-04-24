@@ -7,6 +7,8 @@ namespace CMGA.Shooter.Managers{
     {
         public static GameManager Instance;
         public float GameSpeed = 10;
+        public float PlayerDamage = 1f;
+        public float InvincibilityDuration = 3f;
 
         private void Start(){
             if(Instance != null) {
