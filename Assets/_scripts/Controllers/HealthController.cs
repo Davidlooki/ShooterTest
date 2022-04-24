@@ -9,18 +9,29 @@ namespace CMGA.Shooter.Controllers{
     {
         public float MaxHp = 100;
         public UnityEvent OnDeath;
+        public UnityEvent OnTakeDamage;
         public UnityEvent<float, float> OnHealthChange;
+        public bool DestroyOnNoLife = true;
+        
         private float _curHp;
+
+        private void Start(){
+            Init();
+        }
 
         public void Init(){
             _curHp = MaxHp;
             HealthChanged();
         }
         public void TakeDamage(float dmg){
+            OnTakeDamage?.Invoke();
             _curHp -= dmg;
             if(_curHp < 0){
                 _curHp = 0;
                 OnDeath?.Invoke();
+                if(DestroyOnNoLife){
+                    Destroy(this.gameObject);
+                }
             }
             HealthChanged();
         }
