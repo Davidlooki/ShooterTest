@@ -7,8 +7,8 @@ namespace CMGA.Shooter.Utils{
     public class OrientationController : UIBehaviour
     {
         public Image OrientationSensor;
-        public Canvas PortraitCanvas;
-        public Canvas LandscapeCanvas;
+        public List<Canvas> PortraitCanvases;
+        public List<Canvas> LandscapeCanvases;
 
         protected override void Start(){
             base.Start();
@@ -18,18 +18,32 @@ namespace CMGA.Shooter.Utils{
         protected override void OnRectTransformDimensionsChange()
         {
             base.OnRectTransformDimensionsChange();
-            Debug.Log("Mudou");
-
             UpdateUI();
         }
 
         private void UpdateUI(){
             if(Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown){
-                PortraitCanvas.gameObject.SetActive(true);
-                LandscapeCanvas.gameObject.SetActive(false);
+                foreach (var canvas in PortraitCanvases)
+                {
+                    canvas.gameObject.SetActive(true);    
+                }
+
+                foreach (var canvas in LandscapeCanvases)
+                {
+                    canvas.gameObject.SetActive(false);
+                }
+                
+                
             } else if(Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight){
-                PortraitCanvas.gameObject.SetActive(false);
-                LandscapeCanvas.gameObject.SetActive(true);
+                foreach (var canvas in PortraitCanvases)
+                {
+                    canvas.gameObject.SetActive(false);
+                }
+
+                foreach (var canvas in LandscapeCanvases)
+                {
+                    canvas.gameObject.SetActive(true);
+                }
             }
         }
     }

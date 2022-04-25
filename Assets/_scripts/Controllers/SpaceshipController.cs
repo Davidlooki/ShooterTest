@@ -12,7 +12,8 @@ namespace CMGA.Shooter.Controllers{
         public float lookSpeed;
         public Transform shipModel;
         public Transform aimTarget;
-        public Joystick joystick;
+        public Joystick JoystickLandscape;
+        public Joystick JoystickPortrait;
         public HealthController HealthController;
 
         private void Start(){
@@ -20,6 +21,10 @@ namespace CMGA.Shooter.Controllers{
         }
         private void Update()
         {
+            var isPortrait = Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown;
+            
+            var joystick = isPortrait ? JoystickPortrait : JoystickLandscape;
+
             float h = joystick.Direction.x;
             float v = joystick.Direction.y;
 

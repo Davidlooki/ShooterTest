@@ -9,13 +9,22 @@ namespace CMGA.Shooter.Controllers{
         public Transform AimNear;
         public Transform AimFar;
 
-        public Image AimNearUI;
-        public Image AimFarUI;
+        public Image AimNearUIPortrait;
+        public Image AimFarUIPortrait;
+
+        public Image AimNearUILandscape;
+        public Image AimFarUILandscape;
 
         private void UpdateCrosshairs(){
-            AimNearUI.transform.position = Camera.main.WorldToScreenPoint(AimNear.position);
 
-            AimFarUI.transform.position = Camera.main.WorldToScreenPoint(AimFar.position);
+            var isPortrait = Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown;
+
+            var aimNearUI = isPortrait ? AimNearUIPortrait : AimNearUILandscape;
+            var aimFarUI = isPortrait ? AimFarUIPortrait : AimFarUILandscape;
+
+            aimNearUI.transform.position = Camera.main.WorldToScreenPoint(AimNear.position);
+
+            aimFarUI.transform.position = Camera.main.WorldToScreenPoint(AimFar.position);
         }
 
         private void Update(){

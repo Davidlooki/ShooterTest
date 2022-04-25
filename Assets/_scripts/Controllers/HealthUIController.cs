@@ -6,9 +6,11 @@ using UnityEngine.UI;
 namespace CMGA.Shooter.Controllers{
     public class HealthUIController : MonoBehaviour
     {
-        public Image HealthBar;
+        public Image HealthBarLandscape;
+        public Image HealthBarPortrait;
         public void UpdateDisplay(float maxHp, float curHp){
-            HealthBar.fillAmount = curHp/maxHp;
+            HealthBarLandscape.fillAmount = curHp/maxHp;
+            HealthBarPortrait.fillAmount = curHp/maxHp;
         }
     }
 }
