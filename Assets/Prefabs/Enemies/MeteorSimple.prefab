@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bf389276ce70a4e9597bfd84a496ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 10
+  MaxHp: 20
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -157,17 +157,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7102b340c21c05c4b81bfe4a51cafe73,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.05
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7102b340c21c05c4b81bfe4a51cafe73,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.05
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7102b340c21c05c4b81bfe4a51cafe73,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.05
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7102b340c21c05c4b81bfe4a51cafe73,
         type: 3}

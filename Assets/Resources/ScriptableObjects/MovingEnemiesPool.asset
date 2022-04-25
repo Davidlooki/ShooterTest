@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3a27fa48aadf84b809522105689d49, type: 3}
+  m_Name: MovingEnemiesPool
+  m_EditorClassIdentifier: 
+  EnemiesPrefabs:
+  - {fileID: 3465640834062082912, guid: 10cfcf34869caa447bcfc47cce8a0906, type: 3}
+  - {fileID: 3465640834062082912, guid: ecfe53bc54c80e4488d1281a7c6eba7d, type: 3}
+  - {fileID: 3465640834062082912, guid: d6888cf8be18b4f488f56a98e3596967, type: 3}
+  - {fileID: 3465640834062082912, guid: 4f0b46f766931a448b16134087b21ef5, type: 3}
+  - {fileID: 3465640834062082912, guid: c4a9eeef8cb859f43a7d2625a338b654, type: 3}

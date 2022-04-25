@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using CMGA.Shooter.Controllers.Enemies;
+using CMGA.Shooter.ScriptableObjects;
 using UnityEngine;
 namespace CMGA.Shooter.Controllers{
     public class EnemySpawner : MonoBehaviour
     {
         public static EnemySpawner Instance;
         public GameObject SimpleEnemyPrefab;
-        public GameObject MovingEnemyPrefab;
+        public EnemyPool MovingEnemyPool;
         public float SpawnPositionZ = -20f;
         private const float ENEMY_TYPES = 2f;
 
@@ -22,9 +23,11 @@ namespace CMGA.Shooter.Controllers{
                 var randomY = Random.Range(-2, 3);
                 Instantiate(SimpleEnemyPrefab, new Vector3(randomX, randomY, SpawnPositionZ), Quaternion.identity);
             } else {
+                // moving enemies
+                var enemyPrefab = MovingEnemyPool.GetRandomEnemyPrefab();
                 var randomRotation = Random.Range(0f, 180f);
                 var initialRotation = Quaternion.Euler(0, 0, randomRotation);
-                Instantiate(MovingEnemyPrefab, new Vector3(0, 0, SpawnPositionZ), initialRotation);
+                Instantiate(enemyPrefab, new Vector3(0, 0, SpawnPositionZ), initialRotation);
             }
         }
     }
