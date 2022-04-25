@@ -9,7 +9,7 @@ namespace CMGA.Shooter.Controllers.Enemies{
             Spin();
         }
         private void Spin(){
-            LeanTween.rotateAroundLocal(gameObject, Vector3.forward, 360, 25f)
+            LeanTween.rotateAroundLocal(gameObject, Vector3.forward, 360, 15f)
             .setLoopClamp();
         }
     }

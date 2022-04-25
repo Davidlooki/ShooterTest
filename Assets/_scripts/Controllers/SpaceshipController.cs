@@ -74,5 +74,12 @@ namespace CMGA.Shooter.Controllers{
                 HealthController.TakeDamage(other.GetComponent<Enemy>().BaseDamage);
             }
         }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if(other.gameObject.CompareTag("Enemy")){
+                HealthController.TakeDamage(other.gameObject.GetComponent<Enemy>().BaseDamage);
+            }
+        }
     }
 }

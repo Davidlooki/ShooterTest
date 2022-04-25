@@ -14,7 +14,7 @@ namespace CMGA.Shooter.Controllers{
         public UnityEvent<float, float> OnHealthChange;
         public UnityEvent OnInvincibilityStart;
         public UnityEvent OnInvincibilityFinish;
-
+        public bool enableInvincibility = false;
         public bool DestroyOnNoLife = true;
         
         private float _curHp;
@@ -39,7 +39,9 @@ namespace CMGA.Shooter.Controllers{
                     Destroy(this.gameObject);
                 }
             } else {
-                SetInvincibilityON();
+                if(enableInvincibility){
+                    SetInvincibilityON();
+                }
             }
             HealthChanged();
         }

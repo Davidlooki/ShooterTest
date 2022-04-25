@@ -14,12 +14,5 @@ namespace CMGA.Shooter.Controllers.Enemies{
         private void Update(){
             MoveTowardsCamera();
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if(other.CompareTag("Bullet")){
-                _health.TakeDamage(GameManager.Instance.PlayerDamage);
-            }
-        }
     }
 }
