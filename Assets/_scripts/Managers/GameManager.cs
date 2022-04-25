@@ -13,6 +13,7 @@ namespace CMGA.Shooter.Managers{
         public float PlayerDamage = 1f;
         public int PlayerScore = 0;
         public int EnemyReward = 100;
+        public GameOverScreen GameOverScreen;
         public float InvincibilityDuration = 3f;
         public UnityEvent<int> OnPlayerScore;
 
@@ -27,14 +28,31 @@ namespace CMGA.Shooter.Managers{
         }
 
         public void GameOver(){
-            CancelInvoke(nameof(SpawnEnemy));
-            UIController.Instance.GoToTitleScene();
+            var bestScore = PlayerPrefs.GetInt("BEST_SCORE");
+            if(PlayerScore > bestScore){
+                bestScore = PlayerScore;
+            }
+
+            PlayerPrefs.SetInt("BEST_SCORE", bestScore);
+            PlayerPrefs.SetInt("LAST_SCORE", PlayerScore);
+            
+            GameOverScreen.UpdateInfo();
+            GameOverScreen.gameObject.SetActive(true);
+
         }
 
         public static void RegisterEnemyKilled(){
             Instance.PlayerScore += Instance.EnemyReward;
 
             Instance.OnPlayerScore?.Invoke(Instance.PlayerScore);
+        }
+
+        public void TryAgain(){
+            UIController.Instance.GoToGameplayScene();
+        }
+
+        public void GoHome(){
+            UIController.Instance.GoToTitleScene();
         }
 
         
