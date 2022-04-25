@@ -14,5 +14,9 @@ namespace CMGA.Shooter.Controllers.Enemies{
         private void Update(){
             MoveTowardsCamera();
         }
+
+        private void Start(){
+            GetComponent<HealthController>().OnDeath.AddListener(GameManager.RegisterEnemyKilled);
+        }
     }
 }
